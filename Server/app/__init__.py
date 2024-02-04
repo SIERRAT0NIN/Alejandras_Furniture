@@ -2,17 +2,15 @@ from flask import Flask, request
 from flask_restful import Api, Resource
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlalchemy
-
-# from .models import User, Post
+from .models import User
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager, create_access_token
 from dotenv import load_dotenv
-
-from app_config import db
+from .app_config import db
 import os
 
-load_dotenv()  # Add this at the beginning
+load_dotenv()
 
 
 def create_app():
@@ -25,7 +23,9 @@ def create_app():
     jwt = JWTManager(app)
 
     db.init_app(app)
-    Migrate(app, db)
+    # Migrate(app, db)
+    migrate = Migrate(app, db)
+
     return app
 
 
