@@ -41,7 +41,7 @@ export default function NavBar() {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link color="foreground" href="#">
             Features
           </Link>
@@ -55,14 +55,31 @@ export default function NavBar() {
           <Link color="foreground" href="#">
             Integrations
           </Link>
+        </NavbarItem> */}
+        <NavbarItem className="flex">
+          <Input
+            placeholder="Search..."
+            icon="search"
+            size="sm"
+            variant="line"
+          />
+          <Button>Search</Button>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <Link href="#">
+            Login<span aria-hidden="true">&rarr;</span>
+          </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+        <NavbarItem className="flex">
+          <Button
+            as={Link}
+            color="primary"
+            href="/signup"
+            variant="flat"
+            className="mr-4"
+          >
             Sign Up
           </Button>
           <Button as={Link} color="primary" href="#" variant="flat">

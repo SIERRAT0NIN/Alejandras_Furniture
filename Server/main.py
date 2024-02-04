@@ -3,8 +3,8 @@ from flask_restful import Api, Resource
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import or_
 from datetime import datetime, timedelta
-from models import User
-from app_config import db
+from app.models import User
+from app.app_config import db
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_jwt_extended import (
@@ -20,9 +20,9 @@ from flask_jwt_extended import (
 )
 from dotenv import load_dotenv
 import os
-from schemas import UserSchema, CartSchema, ProductSchema
+from app.schemas import UserSchema, CartSchema, ProductSchema
 from marshmallow import ValidationError
-from __init__ import create_app
+from app.__init__ import create_app
 
 app = create_app()
 

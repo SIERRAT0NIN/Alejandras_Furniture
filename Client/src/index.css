@@ -6,3 +6,9 @@ body {
   height: auto;
   width: auto;
 }
+* {
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  width: auto;
+}
