@@ -4,8 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlalchemy
 from sqlalchemy import or_
 from datetime import datetime, timedelta
-from app.models import User, Cart, Product
-from app.app_config import db
+from models import User, Cart, Product
+from app_config import db
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_jwt_extended import (
@@ -21,7 +21,7 @@ from flask_jwt_extended import (
 )
 from dotenv import load_dotenv
 import os
-from app.schemas import UserSchema, CartSchema, ProductSchema
+from schemas import UserSchema, CartSchema, ProductSchema
 from marshmallow import ValidationError
 
 load_dotenv()
@@ -30,6 +30,7 @@ load_dotenv()
 app = Flask(__name__)
 # Configure your app
 jwt_secret = os.getenv("JWT_SECRET_KEY")
+stripe_secret = os.getenv("STRIPE_SECRET_KEY")
 app.config["JWT_SECRET_KEY"] = jwt_secret
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Alex-store.db"
 app.config["JWT_TOKEN_LOCATION"] = ["cookies", "headers"]

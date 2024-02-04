@@ -1,11 +1,13 @@
 from flask_sqlalchemy import SQLAlchemy  # cSpell:ignore SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.sql import func
-from app.app_config import db
-from app.schemas import UserSchema, CartSchema, ProductSchema
+from app_config import db
+from schemas import UserSchema, CartSchema, ProductSchema
+import os
+import stripe
 
 
-class User(db.Model, SerializerMixin, UserSchema):
+class User(db.Model, SerializerMixin):
     __tablename__ = "users"
     __table_args__ = {"extend_existing": True}
 
@@ -20,7 +22,7 @@ class User(db.Model, SerializerMixin, UserSchema):
         return f"<User {self.username}>"
 
 
-class Cart(db.Model, SerializerMixin, CartSchema):
+class Cart(db.Model, SerializerMixin):
     __tablename__ = "cart"
     __table_args__ = {"extend_existing": True}
 
@@ -38,7 +40,7 @@ class Cart(db.Model, SerializerMixin, CartSchema):
         return f"<Cart {self.id}>"
 
 
-class Product(db.Model, SerializerMixin, ProductSchema):
+class Product(db.Model, SerializerMixin):
     __tablename__ = "products"
     __table_args__ = {"extend_existing": True}
 
