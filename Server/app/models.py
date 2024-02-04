@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy  # cSpell:ignore SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.sql import func
 from app_config import db
-from schemas import UserSchema, CartSchema, ProductSchema
+
 import os
 import stripe
 
